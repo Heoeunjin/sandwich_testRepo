@@ -1,0 +1,21 @@
+{
+  "name": "snadwich_testrepo",
+  "version": "1.0.0",
+  "description": "https://github.com/Heoeunjin/Sandwich.git\r Sandwich 사이트 테스트용입니다.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "mkdir -p build && cp index.html build/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Heoeunjin/snadwich_testRepo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Heoeunjin/snadwich_testRepo/issues"
+  },
+  "homepage": "https://github.com/Heoeunjin/snadwich_testRepo#readme"
+}
