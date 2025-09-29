@@ -542,53 +542,10 @@
     </div>
   </section>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1 class="hero-title">CREATIVE<br>PORTFOLIO</h1>
-      <p class="hero-subtitle">Korea - Seoul</p>
-      
-      <!-- Social Links -->
-      <div class="social-section">
-        <a href="#" class="follow-btn">Follow</a>
-        <div class="social-icons">
-          <a href="#" class="social-icon">f</a>
-          <a href="#" class="social-icon">X</a>
-          <a href="#" class="social-icon">in</a>
-          <a href="#" class="social-icon">📷</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Content Section -->
-  <section class="content-section">
-    <!-- Info Table -->
-    <table class="info-table">
-      <thead>
-        <tr>
-          <th>Languages</th>
-          <th>Status</th>
-          <th>Budget</th>
-          <th>Open To</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Korean, English</td>
-          <td>Professional</td>
-          <td>$20,000 - $40,000</td>
-          <td>In House, Remote</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <!-- Description -->
-    <div class="description">
-      Creative Portfolio is a digital design studio specializing in modern web experiences. 
-      Inquiries: contact@creativeportfolio.com
-    </div>
-  </section>
+  <!-- Main Content Area -->
+  <main>
+    <!-- Content will be dynamically loaded here -->
+  </main>
 
   <!-- Scroll to Top Button -->
   <button class="scroll-top" onclick="scrollToTop()">↑</button>
@@ -619,6 +576,388 @@
   </div>
 
   <script>
+    // Page routing system
+    const pages = {
+      '': {
+        title: 'Creative Portfolio',
+        content: `
+          <section class="hero">
+            <div class="hero-content">
+              <h1 class="hero-title">CREATIVE<br>PORTFOLIO</h1>
+              <p class="hero-subtitle">Korea - Seoul</p>
+              
+              <div class="social-section">
+                <a href="#" class="follow-btn">Follow</a>
+                <div class="social-icons">
+                  <a href="#" class="social-icon">f</a>
+                  <a href="#" class="social-icon">X</a>
+                  <a href="#" class="social-icon">in</a>
+                  <a href="#" class="social-icon">📷</a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <table class="info-table">
+              <thead>
+                <tr>
+                  <th>Languages</th>
+                  <th>Status</th>
+                  <th>Budget</th>
+                  <th>Open To</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Korean, English</td>
+                  <td>Professional</td>
+                  <td>$20,000 - $40,000</td>
+                  <td>In House, Remote</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="description">
+              Creative Portfolio is a digital design studio specializing in modern web experiences. 
+              Inquiries: contact@creativeportfolio.com
+            </div>
+          </section>
+        `
+      },
+      'explore': {
+        title: 'Explore - Creative Portfolio',
+        content: `
+          <section class="explore-hero">
+            <div class="explore-content">
+              <h1 class="explore-title">EXPLORE<br>CREATIVE WORKS</h1>
+              <p class="explore-subtitle">Discover amazing projects and inspirations</p>
+            </div>
+          </section>
+
+          <section class="projects-grid">
+            <div class="project-card">
+              <div class="project-image">
+                <div class="project-placeholder">🎨</div>
+              </div>
+              <div class="project-info">
+                <h3>Web Design Project</h3>
+                <p>Modern responsive website design</p>
+                <div class="project-tags">
+                  <span class="tag">UI/UX</span>
+                  <span class="tag">React</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-image">
+                <div class="project-placeholder">📱</div>
+              </div>
+              <div class="project-info">
+                <h3>Mobile App Design</h3>
+                <p>iOS and Android app interface</p>
+                <div class="project-tags">
+                  <span class="tag">Mobile</span>
+                  <span class="tag">Figma</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-image">
+                <div class="project-placeholder">💻</div>
+              </div>
+              <div class="project-info">
+                <h3>Brand Identity</h3>
+                <p>Complete brand design system</p>
+                <div class="project-tags">
+                  <span class="tag">Branding</span>
+                  <span class="tag">Logo</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-image">
+                <div class="project-placeholder">🎯</div>
+              </div>
+              <div class="project-info">
+                <h3>E-commerce Platform</h3>
+                <p>Online shopping experience</p>
+                <div class="project-tags">
+                  <span class="tag">E-commerce</span>
+                  <span class="tag">Vue.js</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        `
+      },
+      'directory': {
+        title: 'Directory - Creative Portfolio',
+        content: `
+          <section class="directory-hero">
+            <div class="directory-content">
+              <h1 class="directory-title">CREATIVE<br>DIRECTORY</h1>
+              <p class="directory-subtitle">Connect with talented professionals</p>
+            </div>
+          </section>
+
+          <section class="directory-grid">
+            <div class="directory-card">
+              <div class="directory-avatar">👨‍💻</div>
+              <h3>John Designer</h3>
+              <p>UI/UX Designer</p>
+              <div class="directory-skills">
+                <span class="skill">Figma</span>
+                <span class="skill">Sketch</span>
+                <span class="skill">Adobe</span>
+              </div>
+            </div>
+
+            <div class="directory-card">
+              <div class="directory-avatar">👩‍🎨</div>
+              <h3>Sarah Artist</h3>
+              <p>Graphic Designer</p>
+              <div class="directory-skills">
+                <span class="skill">Illustrator</span>
+                <span class="skill">Photoshop</span>
+                <span class="skill">InDesign</span>
+              </div>
+            </div>
+
+            <div class="directory-card">
+              <div class="directory-avatar">👨‍💼</div>
+              <h3>Mike Developer</h3>
+              <p>Frontend Developer</p>
+              <div class="directory-skills">
+                <span class="skill">React</span>
+                <span class="skill">Vue.js</span>
+                <span class="skill">TypeScript</span>
+              </div>
+            </div>
+          </section>
+        `
+      }
+    };
+
+    // Route handler
+    function handleRoute() {
+      const hash = window.location.hash.slice(1);
+      const page = pages[hash] || pages[''];
+      
+      // Update page title
+      document.title = page.title;
+      
+      // Hide/show abstract header based on page
+      const abstractHeader = document.querySelector('.abstract-header');
+      if (abstractHeader) {
+        if (hash === 'explore' || hash === 'directory') {
+          abstractHeader.style.display = 'none';
+        } else {
+          abstractHeader.style.display = 'flex';
+        }
+      }
+      
+      // Update main content
+      const mainContent = document.querySelector('main');
+      if (mainContent) {
+        mainContent.innerHTML = page.content;
+      } else {
+        // Create main element if it doesn't exist
+        const main = document.createElement('main');
+        main.innerHTML = page.content;
+        document.body.appendChild(main);
+      }
+      
+      // Add page-specific styles
+      addPageStyles(hash);
+    }
+
+    // Add page-specific styles
+    function addPageStyles(page) {
+      const existingStyles = document.getElementById('page-styles');
+      if (existingStyles) {
+        existingStyles.remove();
+      }
+
+      const style = document.createElement('style');
+      style.id = 'page-styles';
+      
+      if (page === 'explore') {
+        style.textContent = `
+          .explore-hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 120px 40px 80px;
+          }
+          
+          .explore-title {
+            font-size: clamp(48px, 8vw, 100px);
+            font-weight: 700;
+            line-height: 0.9;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+          }
+          
+          .explore-subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+          }
+          
+          .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+          }
+          
+          .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+          }
+          
+          .project-card:hover {
+            transform: translateY(-5px);
+          }
+          
+          .project-image {
+            height: 200px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          
+          .project-placeholder {
+            font-size: 48px;
+          }
+          
+          .project-info {
+            padding: 20px;
+          }
+          
+          .project-info h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+          }
+          
+          .project-info p {
+            color: #666;
+            margin-bottom: 15px;
+          }
+          
+          .project-tags {
+            display: flex;
+            gap: 8px;
+          }
+          
+          .tag {
+            background: #e9ecef;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+          }
+        `;
+      } else if (page === 'directory') {
+        style.textContent = `
+          .directory-hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 120px 40px 80px;
+          }
+          
+          .directory-title {
+            font-size: clamp(48px, 8vw, 100px);
+            font-weight: 700;
+            line-height: 0.9;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+          }
+          
+          .directory-subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+          }
+          
+          .directory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+          }
+          
+          .directory-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+          }
+          
+          .directory-card:hover {
+            transform: translateY(-5px);
+          }
+          
+          .directory-avatar {
+            font-size: 48px;
+            margin-bottom: 20px;
+          }
+          
+          .directory-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+          }
+          
+          .directory-card p {
+            color: #666;
+            margin-bottom: 20px;
+          }
+          
+          .directory-skills {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+          }
+          
+          .skill {
+            background: #e9ecef;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+          }
+        `;
+      }
+      
+      document.head.appendChild(style);
+    }
+
     // Smooth scroll to top
     function scrollToTop() {
       window.scrollTo({
@@ -630,12 +969,14 @@
     // Show/hide scroll to top button
     window.addEventListener('scroll', function() {
       const scrollTop = document.querySelector('.scroll-top');
-      if (window.pageYOffset > 300) {
-        scrollTop.style.opacity = '1';
-        scrollTop.style.visibility = 'visible';
-      } else {
-        scrollTop.style.opacity = '0';
-        scrollTop.style.visibility = 'hidden';
+      if (scrollTop) {
+        if (window.pageYOffset > 300) {
+          scrollTop.style.opacity = '1';
+          scrollTop.style.visibility = 'visible';
+        } else {
+          scrollTop.style.opacity = '0';
+          scrollTop.style.visibility = 'hidden';
+        }
       }
     });
 
@@ -644,8 +985,14 @@
       document.querySelector('.chat-widget').style.display = 'none';
     });
 
-    // Add some interactive animations
+    // Initialize page
     document.addEventListener('DOMContentLoaded', function() {
+      // Handle initial route
+      handleRoute();
+      
+      // Listen for hash changes
+      window.addEventListener('hashchange', handleRoute);
+      
       // Animate shapes on scroll
       const shapes = document.querySelectorAll('.shape');
       window.addEventListener('scroll', function() {
