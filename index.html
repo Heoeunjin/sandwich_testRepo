@@ -2,11 +2,660 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>Sandwich Test Repo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 20px 40px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #000;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #000;
+      font-weight: 400;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #666;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .search-box {
+      padding: 8px 16px;
+      border: 1px solid #e0e0e0;
+      border-radius: 20px;
+      background: #f8f8f8;
+      font-size: 14px;
+      width: 200px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: #000;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #333;
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: #000;
+      border: 1px solid #e0e0e0;
+    }
+
+    .btn-secondary:hover {
+      background: #f8f8f8;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 40px 80px;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero-title {
+      font-size: clamp(48px, 8vw, 120px);
+      font-weight: 700;
+      line-height: 0.9;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 40px;
+      font-weight: 400;
+    }
+
+    /* Abstract Header */
+    .abstract-header {
+      height: 60vh;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .abstract-content {
+      text-align: center;
+      z-index: 10;
+      position: relative;
+    }
+
+    .abstract-title {
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .abstract-subtitle {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 400;
+      margin-bottom: 30px;
+    }
+
+    .abstract-description {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .abstract-shapes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="stars" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="white" opacity="0.3"/><circle cx="80" cy="40" r="0.5" fill="white" opacity="0.5"/><circle cx="40" cy="80" r="1.5" fill="white" opacity="0.2"/></pattern></defs><rect width="100%" height="100%" fill="url(%23stars)"/></svg>');
+    }
+
+    .geometric-shapes {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .shape {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .shape-1 {
+      width: 200px;
+      height: 200px;
+      top: 20%;
+      left: 10%;
+      transform: rotate(45deg);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+
+    .shape-2 {
+      width: 150px;
+      height: 150px;
+      top: 60%;
+      right: 15%;
+      transform: rotate(-30deg);
+      clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
+    }
+
+    .shape-3 {
+      width: 100px;
+      height: 100px;
+      top: 30%;
+      right: 30%;
+      transform: rotate(60deg);
+      clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+    }
+
+    /* Content Section */
+    .content-section {
+      padding: 80px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 60px;
+      border: 2px solid #000;
+    }
+
+    .info-table th,
+    .info-table td {
+      padding: 20px;
+      text-align: left;
+      border: 1px solid #000;
+      font-weight: 600;
+    }
+
+    .info-table th {
+      background: #f8f8f8;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .info-table td {
+      font-size: 16px;
+    }
+
+    .description {
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 60px;
+    }
+
+    /* Social Links */
+    .social-section {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .follow-btn {
+      background: #fff;
+      color: #000;
+      border: 1px solid #000;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .follow-btn:hover {
+      background: #000;
+      color: #fff;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #000;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      background: #333;
+      transform: translateY(-2px);
+    }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.9);
+      padding: 15px 30px;
+      border-radius: 50px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .bottom-nav .btn {
+      background: transparent;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    .bottom-nav .btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .bottom-nav .btn-accent {
+      background: #4ade80;
+      color: #000;
+      font-weight: 600;
+    }
+
+    .bottom-nav .btn-accent:hover {
+      background: #22c55e;
+    }
+
+    /* Chat Widget */
+    .chat-widget {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 15px;
+      padding: 20px;
+      max-width: 300px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    .chat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .chat-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .profile-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #666;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .chat-close {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .chat-content {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .chat-content a {
+      color: #000;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 15px 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .search-box {
+        width: 150px;
+      }
+
+      .hero {
+        padding: 100px 20px 60px;
+      }
+
+      .content-section {
+        padding: 60px 20px;
+      }
+
+      .info-table {
+        font-size: 14px;
+      }
+
+      .info-table th,
+      .info-table td {
+        padding: 15px 10px;
+      }
+
+      .description {
+        font-size: 20px;
+      }
+
+      .social-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      .bottom-nav {
+        bottom: 20px;
+        padding: 12px 20px;
+        gap: 15px;
+      }
+
+      .chat-widget {
+        bottom: 20px;
+        right: 20px;
+        max-width: 280px;
+      }
+    }
+
+    /* Scroll to top button */
+    .scroll-top {
+      position: fixed;
+      bottom: 120px;
+      left: 30px;
+      width: 50px;
+      height: 50px;
+      background: #333;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .scroll-top:hover {
+      background: #000;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .scroll-top {
+        bottom: 100px;
+        left: 20px;
+        width: 45px;
+        height: 45px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>
-    Sandwich_testRepo
-  </h1>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-content">
+      <a href="#" class="logo">W.</a>
+      <ul class="nav-links">
+        <li><a href="#explore">Explore</a></li>
+        <li><a href="#directory">Directory</a></li>
+        <li><a href="#academy">Academy</a></li>
+        <li><a href="#jobs">Jobs</a></li>
+        <li><a href="#market">Market</a></li>
+      </ul>
+      <div class="nav-actions">
+        <input type="text" class="search-box" placeholder="Q Search by Directory">
+        <a href="#" class="btn btn-secondary">Log in</a>
+        <a href="#" class="btn btn-primary">Sign Up</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Abstract Header -->
+  <section class="abstract-header">
+    <div class="abstract-shapes"></div>
+    <div class="geometric-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+    <div class="abstract-content">
+      <h2 class="abstract-title">DIGITAL EXPERIENCES</h2>
+      <p class="abstract-subtitle">Creating immersive web solutions</p>
+      <p class="abstract-description">
+        We craft exceptional digital experiences that blend creativity with cutting-edge technology. 
+        From concept to completion, we bring your vision to life through innovative design and seamless functionality.
+      </p>
+    </div>
+  </section>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">CREATIVE<br>PORTFOLIO</h1>
+      <p class="hero-subtitle">Korea - Seoul</p>
+      
+      <!-- Social Links -->
+      <div class="social-section">
+        <a href="#" class="follow-btn">Follow</a>
+        <div class="social-icons">
+          <a href="#" class="social-icon">f</a>
+          <a href="#" class="social-icon">X</a>
+          <a href="#" class="social-icon">in</a>
+          <a href="#" class="social-icon">📷</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="content-section">
+    <!-- Info Table -->
+    <table class="info-table">
+      <thead>
+        <tr>
+          <th>Languages</th>
+          <th>Status</th>
+          <th>Budget</th>
+          <th>Open To</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Korean, English</td>
+          <td>Professional</td>
+          <td>$20,000 - $40,000</td>
+          <td>In House, Remote</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Description -->
+    <div class="description">
+      Creative Portfolio is a digital design studio specializing in modern web experiences. 
+      Inquiries: contact@creativeportfolio.com
+    </div>
+  </section>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-top" onclick="scrollToTop()">↑</button>
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <button class="btn">W.</button>
+    <button class="btn">M Creative Portfolio PRO</button>
+    <button class="btn">Profile</button>
+    <button class="btn">SOTD</button>
+    <button class="btn btn-accent">Visit us</button>
+  </div>
+
+  <!-- Chat Widget -->
+  <div class="chat-widget">
+    <div class="chat-header">
+      <div class="chat-profile">
+        <div class="profile-avatar">M</div>
+        <span>Merci Michel</span>
+      </div>
+      <button class="chat-close">×</button>
+    </div>
+    <div class="chat-content">
+      Hi, I'm Merci Michel. 😊<br>
+      I'm looking for an internship / freelance / full time job in a great agency!<br>
+      You can contact me <a href="#">here</a>.
+    </div>
+  </div>
+
+  <script>
+    // Smooth scroll to top
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // Show/hide scroll to top button
+    window.addEventListener('scroll', function() {
+      const scrollTop = document.querySelector('.scroll-top');
+      if (window.pageYOffset > 300) {
+        scrollTop.style.opacity = '1';
+        scrollTop.style.visibility = 'visible';
+      } else {
+        scrollTop.style.opacity = '0';
+        scrollTop.style.visibility = 'hidden';
+      }
+    });
+
+    // Close chat widget
+    document.querySelector('.chat-close').addEventListener('click', function() {
+      document.querySelector('.chat-widget').style.display = 'none';
+    });
+
+    // Add some interactive animations
+    document.addEventListener('DOMContentLoaded', function() {
+      // Animate shapes on scroll
+      const shapes = document.querySelectorAll('.shape');
+      window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        shapes.forEach((shape, index) => {
+          const speed = 0.5 + (index * 0.2);
+          shape.style.transform = `rotate(${45 + scrolled * speed}deg) translateY(${scrolled * speed * 0.1}px)`;
+        });
+      });
+    });
+  </script>
   </body>
 </html>
